@@ -1,0 +1,11 @@
+.login {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .login input, .login button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+  }
+  

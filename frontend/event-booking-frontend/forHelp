@@ -1,0 +1,7 @@
+📂 src
+ ┣ 📂 components    # Reusable UI components (Navbar, Footer, etc.)
+ ┣ 📂 pages         # Page components (Home, Events, Login, Register, etc.)
+ ┣ 📂 context       # Global state management (AuthContext)
+ ┣ 📂 services      # API calls (axios services)
+ ┣ 📂 styles        # CSS files
+ ┗ 📂 assets        # Images & static files

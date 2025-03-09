@@ -1,7 +1,29 @@
-📂 src
- ┣ 📂 components    # Reusable UI components (Navbar, Footer, etc.)
- ┣ 📂 pages         # Page components (Home, Events, Login, Register, etc.)
- ┣ 📂 context       # Global state management (AuthContext)
- ┣ 📂 services      # API calls (axios services)
- ┣ 📂 styles        # CSS files
- ┗ 📂 assets        # Images & static files
+
+
+frontend/
+│── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Footer.jsx
+│   │   ├── styles/
+│   │   │   ├── Navbar.css
+│   │   │   ├── Footer.css
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Events.jsx
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   ├── styles/
+│   │   │   ├── Home.css
+│   │   │   ├── Events.css
+│   │   │   ├── Login.css
+│   │   │   ├── Register.css
+│   ├── styles/
+│   │   ├── global.css
+│   ├── App.jsx
+│   ├── main.jsx
+│── index.html
+│── package.json
+│── vite.config.js
+│── .gitignore
+│── README.md

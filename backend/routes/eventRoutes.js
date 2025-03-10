@@ -7,12 +7,17 @@ const {
   updateEvent,
   deleteEvent,
 } = require("../controllers/eventController.js");
+const { protect, checkRole, checkEventPermissions } = require("../middleware/authMiddleware");
 
-// ✅ Routes (Without Authentication)
+// ✅ Public Routes (Anyone can view events)
 router.get("/", getAllEvents);
 router.get("/:id", getEventById);
-router.post("/", createEvent);  // Removed authMiddleware
-router.put("/:id", updateEvent);  // Removed authMiddleware
-router.delete("/:id", deleteEvent);  // Removed authMiddleware
+
+// ✅ Private Routes (Only authenticated users)
+router.post("/", protect, createEvent);
+
+// ✅ Only Admins OR Event Creators can update/delete events
+router.put("/:id", protect, checkEventPermissions, updateEvent);
+router.delete("/:id", protect, checkEventPermissions, deleteEvent);
 
 module.exports = router;

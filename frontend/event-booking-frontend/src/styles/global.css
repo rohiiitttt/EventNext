@@ -1,14 +1,88 @@
 /* Global Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  body {
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Default Light Theme */
+:root {
+  --bg-color: #f4f4f4;
+  --text-color: #333;
+  --btn-bg-color: #0d25feb9;
+  --btn-hover-color: #ff4b2b;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --btn-bg-color: #ff4b2b;
+  --btn-hover-color: #ff1c00;
+}
+
+/* Smooth transition for background and text color */
+html, body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body, #root {
+  margin: 0;
+  padding: 0;
+  background-color: transparent !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Ensure headings, paragraphs, links, and list items follow the theme */
+h1, h2, h3, h4, h5, h6,
+p, span, li, a {
+  color: var(--text-color);
+  transition: color 0.4s ease;
+}
+
+/* Links styling */
+a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--btn-hover-color);
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: var(--bg-color);
+  padding: 10px 20px;
+  transition: background-color 0.4s ease;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-color);
+  transition: color 0.4s ease;
+}
+
+
+
+
+/* Forgot Password Link */
+.forgot-password-link {
+  display: block;
+  margin-top: 12px;
+  color: var(--btn-bg-color);
+  text-align: center;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.forgot-password-link:hover {
+  color: var(--btn-hover-color);
+}
+

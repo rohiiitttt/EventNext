@@ -1,11 +1,109 @@
 .register {
-    text-align: center;
-    padding: 50px;
-  }
-  
-  .register input, .register button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px;
-  }
-  
+  max-width: 530px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.register h2 {
+  color: var(--text-color);
+  padding-bottom: 20px;
+  font-size: 24px;
+}
+
+/* ✅ Login link (consistent with dark and light modes) */
+.login-link,
+.create-account-link {
+  margin-top: 10px;
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.login-link a,
+.create-account-link a {
+  color: #ff4d4d;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover,
+.create-account-link a:hover {
+  text-decoration: underline;
+}
+
+/* ✅ Input, Select, and Button Styling */
+.register input,
+.register select,
+.register button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.register input:focus,
+.register select:focus {
+  border-color: #ff4d4d;
+  outline: none;
+}
+
+.register select {
+  appearance: none;
+  cursor: pointer;
+}
+
+/* ✅ Label Styling */
+.register label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-color);
+  font-size: 14px;
+  text-align: left;
+}
+
+/* ✅ Button Styling */
+.register button {
+  background-color: #ff4d4d;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.register button:hover {
+  background-color: #ff3333;
+}
+
+/* ✅ Message Styling */
+.message {
+  color: var(--message-color);
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* ✅ Define Dark and Light Mode Variables */
+:root {
+  --text-color: #000;
+  --input-bg: #fff;
+  --border-color: #ccc;
+  --message-color: #ff4d4d;
+  --background-color: #f9f9f9;
+}
+
+[data-theme="dark"] {
+  --text-color: #fff;
+  --input-bg: #222;
+  --border-color: #555;
+  --message-color: #ff4d4d;
+  --background-color: #111;
+}

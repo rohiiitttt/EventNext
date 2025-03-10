@@ -1,11 +1,132 @@
+/* Login container */
 .login {
-    text-align: center;
-    padding: 50px;
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.forgot-password-link {
+  display: block;
+  margin-top: 12px;
+  color: var(--btn-bg-color);
+  text-align: center;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.forgot-password-link:hover {
+  color: var(--btn-hover-color);
+}
+
+
+/* Heading */
+.login h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  transition: color 0.4s ease;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fafafa;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--btn-bg-color);
+}
+
+/* Button styles */
+button {
+  background-color: var(--btn-bg-color);
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--btn-hover-color);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] input[type="email"],
+[data-theme="dark"] input[type="password"] {
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+[data-theme="dark"] input[type="email"]::placeholder,
+[data-theme="dark"] input[type="password"]::placeholder {
+  color: #999;
+}
+
+[data-theme="dark"] button {
+  background-color: var(--btn-bg-color);
+}
+
+[data-theme="dark"] button:hover {
+  background-color: var(--btn-hover-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .login {
+    padding: 16px;
   }
-  
-  .login input, .login button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px;
+
+  h2 {
+    font-size: 1.5rem;
   }
-  
+
+  input[type="email"],
+  input[type="password"] {
+    font-size: 0.9rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+}
+.create-account-link {
+  margin-top: 10px;
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.create-account-link a {
+  color: #ff4d4d; /* Match site theme */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.create-account-link a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,34 @@
+/* Events Page Styles */
+.events-page {
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.events-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start; /* Fix vertical alignment */
+}
+
+.event-btn {
+  background-color: #ff4b2b;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+}
+
+.event-btn:hover {
+  background-color: #ff3a1a;
+}

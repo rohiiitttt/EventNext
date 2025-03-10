@@ -1,0 +1,90 @@
+/* Event card container styles */
+.event-card {
+  position: relative;
+  overflow: hidden;
+  width: 250px; /* Consistent width */
+  height: 350px; /* Consistent height */
+  background-color: #ffffff;
+  color: #000; /* Ensured text color for light mode */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Event image */
+.event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+/* Overlay to improve readability */
+.event-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35%; /* Increased overlay height */
+  background: rgba(0, 0, 0, 0.6); /* Increased opacity */
+  color: #fff; /* White text for better readability */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  transition: height 0.3s ease;
+}
+
+.event-card:hover .event-overlay {
+  height: 65%;
+}
+
+/* Event details */
+.event-details {
+  text-align: center;
+}
+
+.event-details h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #fff; /* Ensured text visibility on overlay */
+}
+
+.event-details p {
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+  color: #eee; /* Lighter text for better contrast */
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .event-card {
+  background-color: #2c2c2c;
+  color: #fff;
+}
+
+[data-theme="dark"] .event-overlay {
+  background: rgba(0, 0, 0, 0.7); /* Darker overlay for dark mode */
+}
+
+[data-theme="dark"] .event-details h3 {
+  color: #fff; /* Consistent white for headings */
+}
+
+[data-theme="dark"] .event-details p {
+  color: #ccc; /* Lighter grey for readability */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .event-card {
+    width: 90%;
+    height: 320px;
+  }
+}

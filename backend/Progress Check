@@ -1,0 +1,55 @@
+**Backend Development Progress**
+
+### ✅ **Completed Features**
+
+#### 🔹 **User Authentication & Authorization**
+- **User Registration** (`POST /api/users/register`)
+  - Registers users with name, email, and password.
+  - Hashes passwords before saving.
+  - Generates JWT token upon successful registration.
+- **User Login** (`POST /api/users/login`)
+  - Authenticates user with email and password.
+  - Generates JWT token for session management.
+- **JWT Authentication Middleware (`protect`)**
+  - Protects routes by requiring a valid JWT token.
+  - Extracts and verifies the token from the Authorization header.
+  - Attaches `req.user` to the request.
+- **Role-based Access Control (RBAC)**
+  - Users have roles: `user`, `admin`.
+  - Certain routes require admin privileges.
+
+#### 🔹 **Event Management System**
+- **Create an Event** (`POST /api/events`)
+  - Allows authenticated users to create events.
+  - Saves event details (title, description, date, venue, createdBy).
+- **Update an Event** (`PUT /api/events/:id`)
+  - Only event creator OR admin can update.
+- **Delete an Event** (`DELETE /api/events/:id`)
+  - Only event creator OR admin can delete.
+- **Fetch Events**
+  - `GET /api/events` → Get all events.
+  - `GET /api/events/:id` → Get a single event by ID.
+- **Middleware: `checkEventPermissions`**
+  - Ensures only event creators or admins can modify events.
+
+#### 🔹 **Security & Best Practices**
+- **Password Hashing** (bcrypt.js before storing in DB).
+- **JWT-based Authentication** (for secured endpoints).
+- **Protected Routes** (for event management).
+- **Error Handling Middleware** (partially implemented).
+- **Logging Errors** (console.error()).
+
+---
+
+### 🔄 **Pending / Future Improvements**
+- **Search & Filtering for Events** (Find events by title, date, venue).
+- **Sorting Events** (Newest first, alphabetical order, etc.).
+- **Send Email Notifications** (For event updates).
+- **Implement Image Upload for Events** (Multer + Cloudinary).
+- **Optimize Database Queries** (Indexes, projections).
+- **Pagination for Event Fetching** (Improves performance) *(On Hold)*.
+
+---
+
+This document serves as a progress tracker for backend development. Future updates will be added as we move forward.
+

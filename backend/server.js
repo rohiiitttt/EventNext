@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const eventRoutes = require("./routes/eventRoutes"); // Import event routes
+const authRoutes = require("./routes/authRoutes");   // Import auth routes
 
 dotenv.config();
 connectDB();
@@ -15,6 +16,10 @@ app.use(cors());
 
 // ✅ Routes
 app.use("/api/events", eventRoutes);
+
+// ✅ Auth routes
+app.use("/api/auth", authRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("Event Booking & Management API is running...");

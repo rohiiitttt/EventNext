@@ -1,0 +1,63 @@
+.my-bookings-container {
+    padding: 1rem;
+  }
+  
+  .my-bookings-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .booking-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  
+  .booking-card {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .booking-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .booking-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .booking-info {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.3rem;
+  }
+  
+  /* ✅ Light Mode */
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9f9f9;
+    --text-primary: #333333;
+    --text-secondary: #555555;
+    --border-color: #dddddd;
+  }
+  
+  /* ✅ Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary: #181818;
+      --bg-secondary: #202020;
+      --text-primary: #f5f5f5;
+      --text-secondary: #aaaaaa;
+      --border-color: #333333;
+    }
+  }
+  

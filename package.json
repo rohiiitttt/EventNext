@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.6.1",
+    "@tanstack/react-query": "^5.67.2",
+    "axios": "^1.8.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.12.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.3.0",
+    "tailwindcss": "^4.0.12"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.2.1"
+  }
+}

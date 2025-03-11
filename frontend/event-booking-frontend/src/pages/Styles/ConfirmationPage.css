@@ -1,0 +1,35 @@
+.confirmation-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #e3f2fd;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  h2 {
+    color: #1e88e5;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  button {
+    background-color: #1e88e5;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #1565c0;
+  }
+  

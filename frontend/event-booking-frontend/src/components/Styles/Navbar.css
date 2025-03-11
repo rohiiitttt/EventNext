@@ -1,3 +1,4 @@
+/* Navbar container */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -13,6 +14,8 @@
   z-index: 1000;
   backdrop-filter: blur(8px); /* Optional glass effect */
 }
+
+/* Logo */
 .navbar .logo {
   color: rgb(255, 33, 33) !important;
 }
@@ -20,7 +23,6 @@
 [data-theme="dark"] .navbar .logo {
   color: rgb(255, 33, 33) !important;
 }
-
 
 .logo {
   font-size: 2rem;
@@ -34,12 +36,12 @@
 .logo:hover {
   color: #3e05ea !important;
 }
+
 [data-theme="dark"] nav .logo:hover {
-  color: #ffffff !important;
+  color: #06eaff !important;
 }
 
-
-
+/* Navigation links */
 .nav-links {
   list-style: none;
   display: flex;
@@ -50,18 +52,77 @@
   display: inline;
 }
 
-.nav-links a {
+.nav-links a,
+.toggle-btn,
+.logout-btn {
   color: rgb(255, 33, 33);
   text-decoration: none;
   font-size: 1rem;
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.toggle-btn:hover,
+.logout-btn:hover {
   color: #3e05ea;
 }
 
-/* Add space to prevent content overlap */
+/* User Profile */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-profile span {
+  color: rgb(255, 33, 33);
+  font-size: 1rem;
+}
+
+.logout-btn {
+  color: red;
+  border: 1px solid red;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: red;
+  color: white;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  --background: #121212;
+  --text: #ffffff;
+  --primary: #ff1b1b;
+}
+
+[data-theme="dark"] .navbar {
+  background-color: rgba(0, 0, 0, 0.677); /* Slight transparency */
+}
+
+[data-theme="dark"] .nav-links a,
+
+[data-theme="dark"] .logout-btn {
+  color: rgb(255, 33, 33)
+}
+[data-theme="dark"] .toggle-btn{
+  color: #ffffff;
+}
+
+[data-theme="dark"] .nav-links a:hover,
+[data-theme="dark"] .toggle-btn:hover,
+[data-theme="dark"] .logout-btn:hover {
+  color: #00e5ff;
+}
+
+/* Prevent content overlap */
 main {
-  padding-top: 80px; 
+  padding-top: 80px;
 }

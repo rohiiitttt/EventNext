@@ -1,2 +1,40 @@
-node_modules
+# Node modules
+node_modules/
+
+# Environment files
 .env
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor settings
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Build files
+/dist
+/build
+
+# Dependency files
+package-lock.json
+yarn.lock
+
+# Cache
+.cache/
+.next/
+out/
+
+# node_modules/ → Prevents uploading dependencies.
+# .env → Protects sensitive credentials.
+# logs → Ignore log files to keep the repo clean.
+#  vscode/, .idea/ → Ignores editor-specific settings.
+# DS_Store, Thumbs.db → Avoids OS-generated clutter.
+# dist, build, .next, out → Ignores build outputs.
+# package-lock.json / yarn.lock → Ignore lock files to avoid version conflicts (if you aren't locking dependencies).

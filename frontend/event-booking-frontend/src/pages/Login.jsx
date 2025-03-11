@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../services/api"; // Import login API function
 import "./styles/Login.css";
+import { Eye, EyeOff } from "lucide-react"; // ✅ For showing/hiding password icon
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // ✅ State to toggle password visibility
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -47,14 +49,26 @@ const Login = () => {
           onChange={handleChange}
           required
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
+        
+        {/* ✅ Password Input with Show/Hide Toggle */}
+        <div className="password-container">
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button
+            type="button"
+            className="toggle-password"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
+        </div>
+
         <button type="submit">Login</button>
       </form>
 

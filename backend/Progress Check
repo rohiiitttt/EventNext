@@ -4,7 +4,7 @@
 
 #### 🔹 **User Authentication & Authorization**
 - **User Registration** (`POST /api/users/register`)
-  - Registers users with name, email, and password.
+  - Registers users with name, email, and password, role optional.
   - Hashes passwords before saving.
   - Generates JWT token upon successful registration.
 - **User Login** (`POST /api/users/login`)

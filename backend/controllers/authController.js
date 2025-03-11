@@ -7,31 +7,34 @@ const generateToken = (id, role) => {
   return jwt.sign({ id, role }, process.env.JWT_SECRET, { expiresIn: "1h" });
 };
 
-// ✅ Register User
-exports.registerUser = async (req, res) => {
-  try {
-    const { name, email, password, role } = req.body;
+  // ✅ Register User
+  exports.registerUser = async (req, res) => {
+    try {
+      const { name, email, password, role } = req.body;
+      console.log("Received Data:", req.body);
 
-    // Check if user already exists
-    const userExists = await User.findOne({ email });
-    if (userExists) {
-      return res.status(400).json({ message: "User already exists" });
+      // Check if user already exists
+      const userExists = await User.findOne({ email });
+      if (userExists) {
+        return res.status(400).json({ message: "User already exists" });
+      }
+
+      // Create New User
+      const newUser = await User.create({ name, email, password, role: role || "user" }); // 👈 Default role
+      console.log("🟢 New user created:", newUser); // ✅ Log created user
+
+      res.status(201).json({
+        _id: newUser._id,
+        name: newUser.name,
+        email: newUser.email,
+        token: generateToken(newUser._id),
+        role: newUser.role,
+      });
+    } catch (error) {
+      console.error("Server Error:", error); // ✅ Log exact error
+      res.status(500).json({ message: "Server error", error: error.message });
     }
-
-    // Create New User
-    const newUser = await User.create({ name, email, password, role: role || "user" }); // 👈 Default role
-
-    res.status(201).json({
-      _id: newUser._id,
-      name: newUser.name,
-      email: newUser.email,
-      token: generateToken(newUser._id),
-      role: newUser.role,
-    });
-  } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
-  }
-};
+  };
 
 
 // ✅ Login User

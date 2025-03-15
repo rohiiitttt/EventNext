@@ -16,10 +16,17 @@ app.use(express.json());
 // ✅ Configure CORS correctly
 app.use(
   cors({
-    origin: "http://localhost:5174", // Allow only your frontend
-    credentials: true, // Allow cookies, tokens, etc.
+    origin: function (origin, callback) {
+      if (!origin || /^http:\/\/localhost:\d+$/.test(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
   })
 );
+
 
 // ✅ Routes
 app.use("/api/events", eventRoutes);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 import "./styles/Navbar.css";
 
 const Navbar = () => {
@@ -83,7 +84,11 @@ const Navbar = () => {
         )}
         <li>
           <button className="toggle-btn" onClick={toggleTheme}>
-            {darkMode ? "🌙" : "☀️"}
+            {darkMode ? (
+              <MdLightMode size={24} color="yellow" />
+            ) : (
+              <MdDarkMode size={24} color="black" />
+            )}
           </button>
         </li>
       </ul>

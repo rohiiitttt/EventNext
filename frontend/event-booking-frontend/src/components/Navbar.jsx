@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
 
@@ -39,7 +40,6 @@ const Navbar = () => {
       <ul className="nav-links">
         {user ? (
           <>
-            {/* If logged in, show user profile and logout */}
             <li className="user-profile">
               <span>👤 {user.name}</span>
               <button onClick={handleLogout} className="logout-btn">
@@ -49,7 +49,6 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            {/* If not logged in, show login and register */}
             <li><Link to="/login">Login</Link></li>
             <li><Link to="/register">Register</Link></li>
           </>
@@ -57,7 +56,11 @@ const Navbar = () => {
         {/* Dark/Light mode toggle */}
         <li>
           <button className="toggle-btn" onClick={toggleTheme}>
-            {darkMode ? '♘' : '♞'}
+            {darkMode ? (
+              <MdLightMode size={24} color="yellow" />
+            ) : (
+              <MdDarkMode size={24} color="black" />
+            )}
           </button>
         </li>
       </ul>

@@ -25,6 +25,7 @@ const Login = () => {
 
       if (response.token) {
         localStorage.setItem("authToken", response.token); // ✅ Store token
+        console.log(localStorage.getItem("authToken"));
         setMessage("Login successful! Redirecting...");
         setTimeout(() => navigate("/"), 2000); // Redirect after login
       } else {

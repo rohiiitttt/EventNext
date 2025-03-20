@@ -1,128 +1,86 @@
-/* Navbar container */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
-  height: 50px;
-  background-color: rgba(0, 0, 0, 0); /* Fully transparent */
-  color: rgb(47, 46, 46);
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  backdrop-filter: blur(8px); /* Optional glass effect */
-}
-
-/* Logo */
-.navbar .logo {
-  color: rgb(255, 33, 33) !important;
-}
-
-[data-theme="dark"] .navbar .logo {
-  color: rgb(255, 33, 33) !important;
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  position: relative; /* Ensures relative positioning for absolute children */
+  z-index: 1000; /* Ensures navbar stays on top */
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 24px;
   font-weight: bold;
-  color: rgb(255, 33, 33);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-family: 'Lora', serif;
+  color: red;
 }
 
-.logo:hover {
-  color: #3e05ea !important;
-}
-
-[data-theme="dark"] nav .logo:hover {
-  color: #06eaff !important;
-}
-
-/* Navigation links */
 .nav-links {
-  list-style: none;
   display: flex;
-  gap: 20px;
+  align-items: center;
+  list-style: none;
 }
 
 .nav-links li {
-  display: inline;
+  margin-left: 15px;
+  position: relative;
 }
 
-.nav-links a,
-.toggle-btn,
-.logout-btn {
-  color: rgb(255, 33, 33);
-  text-decoration: none;
-  font-size: 1rem;
+.menu-btn {
+  font-size: 24px;
   background: none;
   border: none;
-  padding: 5px 10px;
   cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover,
-.toggle-btn:hover,
-.logout-btn:hover {
-  color: #3e05ea;
-}
-
-/* User Profile */
-.user-profile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.user-profile span {
-  color: rgb(255, 33, 33);
-  font-size: 1rem;
-}
-
-.logout-btn {
   color: red;
-  border: 1px solid red;
-  padding: 4px 8px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 1100; /* Ensures menu button stays on top */
 }
 
-.logout-btn:hover {
-  background-color: red;
-  color: white;
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Adjusted for better alignment */
+  right: 0;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  z-index: 1200; /* Ensures dropdown stays on top */
 }
 
-/* Dark Mode */
-[data-theme="dark"] {
-  --background: #121212;
-  --text: #ffffff;
-  --primary: #ff1b1b;
+.dropdown-menu a,
+.dropdown-menu button {
+  padding: 10px 15px;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
 }
 
-[data-theme="dark"] .navbar {
-  background-color: rgba(0, 0, 0, 0.677); /* Slight transparency */
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+  background: #f1f1f1;
 }
 
-[data-theme="dark"] .nav-links a,
-
-[data-theme="dark"] .logout-btn {
-  color: rgb(255, 33, 33)
-}
-[data-theme="dark"] .toggle-btn{
-  color: #ffffff;
+.delete-btn {
+  color: red;
 }
 
-[data-theme="dark"] .nav-links a:hover,
-[data-theme="dark"] .toggle-btn:hover,
-[data-theme="dark"] .logout-btn:hover {
-  color: #00e5ff;
-}
-
-/* Prevent content overlap */
-main {
-  padding-top: 80px;
+/* Fix overlapping issue */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  background: white;
+  transform: rotate(45deg);
+  box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: -1;
 }

@@ -8,7 +8,8 @@ const {
   forgotPassword,
   resetPassword,
   verifyOtp,
-  resendOtp
+  resendOtp,
+  deleteUser
 } = require("../controllers/authController");
 
 const { protect } = require("../middleware/authMiddleware"); // Import the correct function
@@ -21,5 +22,6 @@ router.post("/forgot-password", forgotPassword); // working
 router.post("/reset-password", resetPassword); // working
 router.post("/verify-otp", verifyOtp);
 router.post("/resend-otp", resendOtp);
+router.delete("/deleteUser", protect, deleteUser);
 
 module.exports = router;

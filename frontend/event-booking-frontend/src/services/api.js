@@ -27,6 +27,7 @@ export const loginUser = async (credentials) => {
   }
 };
 
+// ✅ AUTHENTICATION API CALLS
 export const getUserProfile = async (token) => {
   try {
     const response = await API.get("/auth/profile", {

@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword"; // ✅ Import ForgotPassword
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import UserProfile from "./pages/UserProfile";
 
 const App = () => {
   const toggleTheme = () => {
@@ -30,6 +31,8 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgot-password" element={<ForgotPassword />} /> {/* ✅ Forgot Password Route */}
+            <Route path="/user-profile" element={<UserProfile />} /> {/* ✅ Forgot Password Route */}
+
           </Routes>
         </main>
         <Footer />

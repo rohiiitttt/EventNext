@@ -19,8 +19,9 @@ const Register = () => {
   };
 
   const isStrongPassword = (password) => {
-    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password);
-  };
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/.test(password);
+};
+
 
   const handleSubmit = async (e) => { // ✅ Made `handleSubmit` async to handle API call
     e.preventDefault();

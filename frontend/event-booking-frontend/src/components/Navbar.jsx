@@ -1,35 +1,56 @@
-import React, { useState, useEffect } from "react";
-import { MdDarkMode, MdLightMode } from "react-icons/md";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem('theme') === 'dark';
-  });
-
-  const [user, setUser] = useState(() => {
-    return JSON.parse(localStorage.getItem("user")) || null;
-  });
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
+  const [user, setUser] = useState(() => localStorage.getItem("authToken") || null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null); // Reference for menu dropdown
 
   useEffect(() => {
     if (darkMode) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
+      document.documentElement.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
     } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
+      document.documentElement.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [menuOpen]);
 
   const toggleTheme = () => {
     setDarkMode(!darkMode);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("authToken");
     setUser(null);
-    window.location.href = "/"; // Redirect to homepage after logout
+    window.location.href = "/";
+  };
+
+  const handleDeleteAccount = () => {
+    if (window.confirm("Are you sure you want to delete your account?")) {
+      localStorage.removeItem("user");
+      setUser(null);
+      window.location.href = "/";
+    }
   };
 
   return (
@@ -39,28 +60,30 @@ const Navbar = () => {
       </Link>
       <ul className="nav-links">
         {user ? (
-          <>
-            <li className="user-profile">
-              <span>👤 {user.name}</span>
-              <button onClick={handleLogout} className="logout-btn">
-                Logout
-              </button>
-            </li>
-          </>
+          <li className="user-menu" ref={menuRef}>
+            <button onClick={() => setMenuOpen(!menuOpen)} className="menu-btn">
+              ☰
+            </button>
+            {menuOpen && (
+              <div className="dropdown-menu">
+                <Link to="/user-profile">View Profile</Link>
+                <Link to="/edit-profile">Edit Profile</Link>
+                <button onClick={handleLogout}>Logout</button>
+                <button onClick={handleDeleteAccount} className="delete-btn">
+                  Delete Account
+                </button>
+              </div>
+            )}
+          </li>
         ) : (
           <>
             <li><Link to="/login">Login</Link></li>
             <li><Link to="/register">Register</Link></li>
           </>
         )}
-        {/* Dark/Light mode toggle */}
         <li>
           <button className="toggle-btn" onClick={toggleTheme}>
-            {darkMode ? (
-              <MdLightMode size={24} color="yellow" />
-            ) : (
-              <MdDarkMode size={24} color="black" />
-            )}
+            {darkMode ? "🌙" : "☀️"}
           </button>
         </li>
       </ul>

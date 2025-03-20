@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
-import { MdDarkMode } from "react-icons/md";
-
 
 const Navbar = () => {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
@@ -85,7 +83,7 @@ const Navbar = () => {
         )}
         <li>
           <button className="toggle-btn" onClick={toggleTheme}>
-            {darkMode ? "♘" : "♞"}
+            {darkMode ? "🌙" : "☀️"}
           </button>
         </li>
       </ul>

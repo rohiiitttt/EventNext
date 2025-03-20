@@ -1,4 +1,4 @@
-require("dotenv").config(); // ✅ Already loaded here
+require("dotenv").config(); // ✅ Load environment variables
 
 const express = require("express");
 const cors = require("cors");
@@ -14,7 +14,6 @@ const app = express();
 app.use(express.json());
 
 // ✅ Configure CORS correctly
-// ✅ Configure CORS correctly
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -28,7 +27,6 @@ app.use(
   })
 );
 
-
 // ✅ Routes
 app.use("/api/events", eventRoutes);
 app.use("/api/auth", authRoutes);
@@ -40,10 +38,12 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 
-// ✅ Error handling middleware
+// ✅ Error handling middleware (must be the last middleware)
 app.use((err, req, res, next) => {
   console.error("❌ Server Error:", err);
   res.status(500).json({ message: "Internal Server Error" });
 });
+
+// ✅ Debugging logs (remove in production)
 console.log("PORT:", process.env.PORT);
 console.log("MONGO_URI:", process.env.MONGO_URI);

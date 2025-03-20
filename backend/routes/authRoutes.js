@@ -7,6 +7,7 @@ const {
   updateUserProfile,
   forgotPassword,
   resetPassword,
+  deleteUser
 } = require("../controllers/authController");
 
 const { protect } = require("../middleware/authMiddleware"); // Import the correct function
@@ -17,5 +18,6 @@ router.get("/profile", protect, getUserProfile); // Fixed
 router.put("/profile", protect, updateUserProfile);
 router.post("/forgot-password", forgotPassword); // working
 router.post("/reset-password", resetPassword); // working
+router.delete("/deleteUser", protect, deleteUser);
 
 module.exports = router;

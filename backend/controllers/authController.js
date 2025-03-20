@@ -83,21 +83,66 @@ exports.loginUser = async (req, res) => {
   }
 };
 
-
-// ✅ Get User Profile (Protected Route)
-exports.getUserProfile = async (req, res) => {
+// ✅ Delete User (Protected Route)
+exports.deleteUser = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("-password");
+    const userId = req.user.id; // Extract ID from JWT token
 
-    if (user) {
-      res.json(user);
-    } else {
-      res.status(404).json({ message: "User not found" });
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
     }
+
+    await User.deleteOne({ _id: userId });
+
+    res.json({ message: "User account deleted successfully" });
   } catch (error) {
+    console.error("Delete User Error:", error.message);
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+
+exports.getUserProfile = async (req, res) => {
+  try {
+    // Extract token from the Authorization header
+    const token = req.header("Authorization");
+
+    if (!token) {
+      return res.status(401).json({ success: false, message: "Access denied. No token provided." });
+    }
+
+    // Verify token
+    const decoded = jwt.verify(token.replace("Bearer ", ""), process.env.JWT_SECRET);
+    req.user = decoded;
+
+    // Fetch user from database, excluding password field
+    const user = await User.findById(req.user.id).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    res.status(200).json({ 
+      success: true, 
+      message: "User profile fetched successfully",
+      data: user 
+    });
+  } catch (error) {
+    console.error("Error fetching user profile:", error.message);
+
+    if (error.name === "JsonWebTokenError") {
+      return res.status(401).json({ success: false, message: "Invalid token" });
+    }
+
+    res.status(500).json({ 
+      success: false, 
+      message: "Internal server error", 
+      error: error.message 
+    });
+  }
+};
+
 
 // ✅ Update User Profile (Protected Route)
 exports.updateUserProfile = async (req, res) => {

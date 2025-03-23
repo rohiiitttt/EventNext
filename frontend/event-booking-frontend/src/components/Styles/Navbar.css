@@ -7,23 +7,15 @@
   height: 50px;
   background-color: rgba(0, 0, 0, 0); /* Fully transparent */
   color: rgb(47, 46, 46);
-  position: relative;
+  position: fixed; /* Fixed position to stay on top */
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  backdrop-filter: blur(8px); /* Optional glass effect */
+  backdrop-filter: blur(8px); /* Glass effect */
 }
 
 /* Logo */
-.navbar .logo {
-  color: rgb(255, 33, 33) !important;
-}
-
-[data-theme="dark"] .navbar .logo {
-  color: rgb(255, 33, 33) !important;
-}
-
 .logo {
   font-size: 2rem;
   font-weight: bold;
@@ -37,7 +29,7 @@
   color: #3e05ea !important;
 }
 
-[data-theme="dark"] nav .logo:hover {
+[data-theme="dark"] .logo:hover {
   color: #06eaff !important;
 }
 
@@ -46,6 +38,7 @@
   list-style: none;
   display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 .nav-links li {
@@ -71,55 +64,94 @@
   color: #3e05ea;
 }
 
-/* User Profile */
-.user-profile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* User Menu */
+.user-menu {
+  position: relative;
 }
 
-.user-profile span {
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
   color: rgb(255, 33, 33);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Position below the button */
+  right: 0;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  z-index: 1001; /* Ensure it's above other elements */
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 8px;
+  min-width: 180px; /* Minimum width for better readability */
+  opacity: 0; /* Start hidden for animation */
+  transform: translateY(-10px); /* Start slightly above for animation */
+  visibility: hidden; /* Start hidden */
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+/* Show dropdown menu when open */
+.dropdown-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Dropdown Menu Links and Buttons */
+.dropdown-menu a,
+.dropdown-menu button {
+  color: rgb(255, 33, 33);
+  text-decoration: none;
   font-size: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.logout-btn {
+/* Hover effect for links and buttons */
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+  background-color: rgba(255, 33, 33, 0.1); /* Light red background on hover */
+  color: #3e05ea; /* Change text color on hover */
+}
+
+/* Logout button specific styling */
+.dropdown-menu button {
   color: red;
-  border: 1px solid red;
-  padding: 4px 8px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
 }
 
-.logout-btn:hover {
+.dropdown-menu button:hover {
   background-color: red;
   color: white;
 }
 
-/* Dark Mode */
-[data-theme="dark"] {
-  --background: #121212;
-  --text: #ffffff;
-  --primary: #ff1b1b;
+/* Dark Mode adjustments for dropdown menu */
+[data-theme="dark"] .dropdown-menu {
+  background-color: #1e1e1e; /* Dark background for dark mode */
+  border-color: #333; /* Darker border for dark mode */
 }
 
-[data-theme="dark"] .navbar {
-  background-color: rgba(0, 0, 0, 0.677); /* Slight transparency */
+[data-theme="dark"] .dropdown-menu a,
+[data-theme="dark"] .dropdown-menu button {
+  color: #ff1b1b; /* Red text for dark mode */
 }
 
-[data-theme="dark"] .nav-links a,
-
-[data-theme="dark"] .logout-btn {
-  color: rgb(255, 33, 33)
-}
-[data-theme="dark"] .toggle-btn{
-  color: #ffffff;
-}
-
-[data-theme="dark"] .nav-links a:hover,
-[data-theme="dark"] .toggle-btn:hover,
-[data-theme="dark"] .logout-btn:hover {
-  color: #00e5ff;
+[data-theme="dark"] .dropdown-menu a:hover,
+[data-theme="dark"] .dropdown-menu button:hover {
+  background-color: rgba(255, 33, 33, 0.1); /* Light red background on hover */
+  color: #00e5ff; /* Cyan text on hover for dark mode */
 }
 
 /* Prevent content overlap */

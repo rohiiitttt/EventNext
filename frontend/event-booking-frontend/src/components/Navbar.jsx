@@ -10,11 +10,13 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
+  // Apply dark/light theme
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", darkMode ? "dark" : "light");
     localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
+  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -38,22 +40,21 @@ const Navbar = () => {
             ☰
           </button>
 
-          {menuOpen && (
-            <div className="dropdown-menu">
-              {!user ? (
-                <>
-                  <Link to="/login">Login</Link>
-                  <Link to="/register">Register</Link>
-                </>
-              ) : (
-                <>
-                  <Link to="/user-profile">View Profile</Link>
-                  <Link to="/edit-profile">Edit Profile</Link>
-                  <button onClick={logout}>Logout</button>
-                </>
-              )}
-            </div>
-          )}
+          {/* Dropdown menu with 'open' class for animation */}
+          <div className={`dropdown-menu ${menuOpen ? "open" : ""}`}>
+            {!user ? (
+              <>
+                <Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
+                <Link to="/register" onClick={() => setMenuOpen(false)}>Register</Link>
+              </>
+            ) : (
+              <>
+                <Link to="/user-profile" onClick={() => setMenuOpen(false)}>View Profile</Link>
+                <Link to="/edit-profile" onClick={() => setMenuOpen(false)}>Edit Profile</Link>
+                <button onClick={() => { logout(); setMenuOpen(false); }}>Logout</button>
+              </>
+            )}
+          </div>
         </li>
 
         <li>

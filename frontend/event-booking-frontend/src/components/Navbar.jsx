@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback, useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { AuthContext } from "../context/AuthContext";
 import "./styles/Navbar.css";
 
@@ -56,8 +57,12 @@ const Navbar = () => {
         </li>
 
         <li>
-          <button className="toggle-btn" onClick={() => setDarkMode(!darkMode)} aria-label="Toggle Theme">
-            {darkMode ? "🌙" : "☀️"}
+          <button className="toggle-btn" onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? (
+              <MdLightMode size={24} color="yellow" />
+            ) : (
+              <MdDarkMode size={24} color="black" />
+            )}
           </button>
         </li>
       </ul>

@@ -55,10 +55,10 @@ export const updateUserProfile = async (token, profileData) => {
 export const forgotPassword = async (email) => {
   try {
     const response = await API.post("/auth/forgot-password", { email });
-    return response.data;
+    return response.data; // Return only response.data
   } catch (error) {
     console.error("Error sending reset email:", error);
-    throw error;
+    throw error.response?.data || { message: "Failed to send reset email" };
   }
 };
 
@@ -126,5 +126,26 @@ export const deleteEvent = async (token, eventId) => {
   } catch (error) {
     console.error("Error deleting event:", error);
     throw error;
+  }
+};
+
+// ✅ OTP VERIFICATION API CALLS (Fixed)
+export const verifyOtp = async (email, otp) => {
+  try {
+    const response = await API.post("/auth/verify-otp", { email, otp }); // ✅ Use API instance
+    return response.data;
+  } catch (error) {
+    console.error("Error verifying OTP:", error);
+    throw error.response?.data || { message: "Something went wrong" };
+  }
+};
+
+export const resendOtp = async (email) => {
+  try {
+    const response = await API.post("/auth/resend-otp", { email }); // ✅ Use API instance
+    return response.data;
+  } catch (error) {
+    console.error("Error resending OTP:", error);
+    throw error.response?.data || { message: "Failed to resend OTP" };
   }
 };

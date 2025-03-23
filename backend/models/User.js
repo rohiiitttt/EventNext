@@ -6,7 +6,16 @@ const UserSchema = new mongoose.Schema(
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ["user", "organizer"], default: "user" } // Default 'user'
+    role: { type: String, enum: ["user", "organizer"], default: "user" }, // Default 'user'
+    gender: { type: String, enum: ["Male", "Female", "Other"], default: "Other" },
+    location: { type: String },
+    birthday: { type: Date },
+    summary: { type: String },
+    socialAccounts: {
+      github: { type: String, default: "" },
+      linkedin: { type: String, default: "" },
+      email: { type: String, default: "" },
+    },
   },
   { timestamps: true }
 );

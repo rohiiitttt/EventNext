@@ -7,6 +7,8 @@ const {
   updateUserProfile,
   forgotPassword,
   resetPassword,
+  verifyOtp,       // Keep OTP routes
+  resendOtp,       // Keep OTP routes
   deleteUser
 } = require("../controllers/authController");
 
@@ -18,6 +20,8 @@ router.get("/profile", protect, getUserProfile); // Fixed
 router.put("/profile", protect, updateUserProfile);
 router.post("/forgot-password", forgotPassword); // working
 router.post("/reset-password", resetPassword); // working
-router.delete("/deleteUser", protect, deleteUser);
+router.post("/verify-otp", verifyOtp);  // Keep OTP route
+router.post("/resend-otp", resendOtp);  // Keep OTP route
+router.delete("/deleteUser", protect, deleteUser);  // Keep deleteUser route
 
 module.exports = router;

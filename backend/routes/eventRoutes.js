@@ -10,11 +10,11 @@ const {
 const { protect, checkRole, checkEventPermissions } = require("../middleware/authMiddleware");
 
 // ✅ Public Routes (Anyone can view events)
-router.get("/", getAllEvents);
-router.get("/:id", getEventById);
+router.get("/", getAllEvents); //done
+router.get("/:id", getEventById);//done
 
 // ✅ Private Routes (Only authenticated users)
-router.post("/", protect, createEvent);
+router.post("/", protect, createEvent); //done
 
 // ✅ Only Admins OR Event Creators can update/delete events
 router.put("/:id", protect, checkEventPermissions, updateEvent);

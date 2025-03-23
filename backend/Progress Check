@@ -53,3 +53,6 @@ cd**Backend Development Progress**
 
 This document serves as a progress tracker for backend development. Future updates will be added as we move forward.
 
+Date - 22/03/2025
+
+added event searching, sorting, filtering, and pagination to the backend's code so no need to add filtering to the frontend just add params to the frontend's request api

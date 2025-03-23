@@ -42,45 +42,44 @@ const generateToken = (id, role) => {
 // ✅ Login User
 exports.loginUser = async (req, res) => {
   try {
-    console.log("Received Login Request: ", req.body); // Debug request body
+    console.log("🔹 Received Login Request:", req.body);
 
     const { email, password } = req.body;
 
     if (!email || !password) {
+      console.warn("⚠️ Missing email or password");
       return res.status(400).json({ message: "Email and password are required" });
     }
 
-    console.log("Finding user with email:", email);
+    console.log("🔍 Searching for user with email:", email);
     const user = await User.findOne({ email });
 
     if (!user) {
-      console.log("User not found!");
+      console.warn("❌ User not found:", email);
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    console.log("User found:", user);
+    console.log("✅ User found:", user.email);
 
-    const isPasswordValid = await bcrypt.compare(password, user.password); // ✅ CORRECT
+    // Check password
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    console.log("🔐 Password Match:", isPasswordValid);
 
-    console.log("Entered Password:", password);
-    console.log("Stored Hashed Password:", user.password);
-    console.log("Password Match Result:", isPasswordValid);
-    
-
-
-    if (isPasswordValid) {
-      res.json({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        token: generateToken(user._id),
-      });
-    } else {
-      console.log("Password incorrect!");
-      res.status(401).json({ message: "Invalid email or password" });
+    if (!isPasswordValid) {
+      console.warn("❌ Incorrect password for:", email);
+      return res.status(401).json({ message: "Invalid email or password" });
     }
+
+    console.log("🔓 Login successful:", email);
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+    });
+
   } catch (error) {
-    console.error("Login Error: ", error.message);
+    console.error("❌ Login Error:", error.message);
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
@@ -154,6 +153,15 @@ exports.updateUserProfile = async (req, res) => {
     if (user) {
       user.name = req.body.name || user.name;
       user.email = req.body.email || user.email;
+      user.gender = req.body.gender || user.gender;
+      user.location = req.body.location || user.location;
+      user.birthday = req.body.birthday || user.birthday;
+      user.summary = req.body.summary || user.summary;
+
+      if (req.body.socialAccounts) {
+        user.socialAccounts.github = req.body.socialAccounts.github || user.socialAccounts.github;
+        user.socialAccounts.linkedin = req.body.socialAccounts.linkedin || user.socialAccounts.linkedin;
+      }
 
       if (req.body.password) {
         const salt = await bcrypt.genSalt(10);
@@ -166,7 +174,11 @@ exports.updateUserProfile = async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        token: generateToken(user._id),
+        gender: user.gender,
+        location: user.location,
+        birthday: user.birthday,
+        summary: user.summary,
+        socialAccounts: user.socialAccounts,
       });
     } else {
       res.status(404).json({ message: "User not found" });
@@ -175,6 +187,7 @@ exports.updateUserProfile = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
 
 
 // ✅ Forgot Password (Send Reset Link)

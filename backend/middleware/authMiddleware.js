@@ -39,17 +39,34 @@ exports.checkRole = (...roles) => {
 exports.checkEventPermissions = async (req, res, next) => {
   try {
     const event = await Event.findById(req.params.id);
+
     if (!event) {
       return res.status(404).json({ message: "Event not found" });
     }
 
-    // ✅ Allow if Admin OR Creator
-    if (req.user.role === "admin" || req.user.id === event.creator.toString()) {
+    console.log("Event Data:", event);
+console.log("Event Creator:", event.createdBy);
+console.log("User ID:", req.user._id);
+
+    // Ensure event.creator exists before calling `.toString()`
+    if (!event.createdBy) {
+      return res.status(500).json({ message: "Event creator is missing in database" });
+    }
+
+    // Convert both IDs to strings before comparison
+    if (req.user.role === "admin" || req.user._id.toString() === event.createdBy.toString()) {
       return next();
     }
 
     res.status(403).json({ message: "Access Denied: Not authorized" });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+exports.isAdmin = (req, res, next) => {
+  if (req.user && req.user.role === "admin") {
+      next();
+  } else {
+      res.status(403).json({ message: "Access Denied: Admins only" });
   }
 };

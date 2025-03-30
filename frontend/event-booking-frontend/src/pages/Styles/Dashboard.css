@@ -1,0 +1,52 @@
+.dashboard-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    margin: 10px;
+  }
+  
+  .chart-container {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .events-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .event-section {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+  }
+  
+  .event-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .event-section li {
+    padding: 5px 0;
+  }
+  

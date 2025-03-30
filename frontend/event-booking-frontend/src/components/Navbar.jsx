@@ -10,13 +10,11 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
-  // Apply dark/light theme
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", darkMode ? "dark" : "light");
     localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -36,11 +34,9 @@ const Navbar = () => {
       <Link to="/" className="logo">EventNext</Link>
       <ul className="nav-links">
         <li className="user-menu" ref={menuRef}>
-          <button onClick={() => setMenuOpen((prev) => !prev)} className="menu-btn">
+          <button onClick={() => setMenuOpen((prev) => !prev)} className="menu-btn" title="User Menu">
             ☰
           </button>
-
-          {/* Dropdown menu with 'open' class for animation */}
           <div className={`dropdown-menu ${menuOpen ? "open" : ""}`}>
             {!user ? (
               <>
@@ -56,9 +52,12 @@ const Navbar = () => {
             )}
           </div>
         </li>
-
         <li>
-          <button className="toggle-btn" onClick={() => setDarkMode(!darkMode)}>
+          <button 
+            className="toggle-btn" 
+            onClick={() => setDarkMode(!darkMode)}
+            title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          >
             {darkMode ? (
               <MdLightMode size={24} color="yellow" />
             ) : (

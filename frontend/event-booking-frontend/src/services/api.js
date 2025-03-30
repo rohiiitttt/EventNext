@@ -149,3 +149,15 @@ export const resendOtp = async (email) => {
     throw error.response?.data || { message: "Failed to resend OTP" };
   }
 };
+export const getDashboardData = async (token) => {
+  try {
+    console.log("Fetching dashboard data..."); // Log to check if it's running twice
+    const response = await API.get("/dashboard", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching dashboard data:", error);
+    throw error;
+  }
+}

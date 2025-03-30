@@ -6,6 +6,7 @@ const connectDB = require("./config/db");
 const eventRoutes = require("./routes/eventRoutes");
 const authRoutes = require("./routes/authRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes"); // ✅ Import dashboard routes
 
 connectDB();
 
@@ -32,6 +33,7 @@ app.use(
 app.use("/api/events", eventRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 app.get("/", (req, res) => {
   res.send("Event Booking & Management API is running...");

@@ -175,3 +175,28 @@ exports.getEventBookings = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch bookings", error: error.message });
   }
 };
+
+// ✅ 6️⃣ Get Ticket Sales Summary (For Dashboard)
+exports.getTicketSales = async (req, res) => {
+  try {
+    const salesData = await Booking.aggregate([
+      {
+        $match: { paymentStatus: "success" }, // Only count successful bookings
+      },
+      {
+        $group: {
+          _id: null,
+          totalRevenue: { $sum: "$totalPrice" }, // Sum of all successful payments
+          totalTickets: { $sum: "$quantity" }, // Total tickets sold
+        },
+      },
+    ]);
+
+    const result = salesData.length > 0 ? salesData[0] : { totalRevenue: 0, totalTickets: 0 };
+
+    res.status(200).json(result);
+  } catch (error) {
+    console.error("❌ Error fetching ticket sales:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};

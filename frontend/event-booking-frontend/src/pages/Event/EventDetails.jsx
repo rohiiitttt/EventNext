@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import events from "./EventsData";
-import "./Styles/EventDetails.css";
+import "../styles/EventDetails.css";
+
 
 const EventDetails = () => {
   const { id } = useParams();

@@ -20,7 +20,7 @@
 .password-container input {
   width: 100%; /* ✅ Proper width */
   padding: 12px;
-  padding-right: 40px; /* ✅ Space for eye icon */
+  padding-right: 90px; /* ✅ Space for eye icon */
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
@@ -30,14 +30,14 @@
 
 /* Eye icon inside input field */
 .password-container button {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
+  right: 1px;
+  top: 5%;
+  transform: translateY(-130%);
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--btn-bg-color); /* ✅ Match login button color */
+  color: var(--btn-bg-color); 
   padding: 0;
   font-size: 1.2rem;
 }

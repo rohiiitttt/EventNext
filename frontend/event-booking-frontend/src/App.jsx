@@ -2,14 +2,15 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthProvider from "./context/AuthContext";
 import Home from "./pages/Home";
-import Events from "./pages/Events";
-import EventDetails from "./pages/EventDetails";
+import Events from "./pages/Event/Events";
+import EventDetails from "./pages/Event/EventDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import UserProfile from "./pages/UserProfile";
+// import PaymentPage from "./pages/PaymentPage";
 
 const App = () => {
   const toggleTheme = () => {
@@ -34,6 +35,8 @@ const App = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/user-profile" element={<UserProfile />} />
+              {/* <Route path="/payment" element={<PaymentPage />} /> */}
+
             </Routes>
           </main>
           <Footer />

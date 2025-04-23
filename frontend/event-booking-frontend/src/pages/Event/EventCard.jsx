@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./styles/EventCard.css";
+import "../Styles/EventCard.css";
 
 const EventCard = ({ event }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/events/${event.id}`);
+    navigate(`/events/${event.id}`, { state: { event } }); // 👈 send event as state
   };
 
   return (

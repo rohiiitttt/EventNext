@@ -1,44 +1,43 @@
-.payment-container {
+.payment-page {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .event-summary-card {
+    margin: 1rem auto;
+    padding: 1rem;
     max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fafafa;
   }
   
-  h2 {
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  form div {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  input, button {
+  .event-summary-card img {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    border-radius: 10px;
   }
   
-  button {
-    background-color: #4CAF50;
+  .price {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .pay-now-btn {
+    padding: 10px 20px;
+    margin-top: 1rem;
+    background-color: #4caf50;
     color: white;
-    cursor: pointer;
     border: none;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
   }
   
-  button:hover {
-    background-color: #45a049;
+  .popup.success {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 5px;
   }
   

@@ -1,16 +1,14 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import events from "./EventsData";
-import "./Styles/EventDetails.css";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import "../styles/EventDetails.css";
 
 const EventDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { state } = useLocation(); // 👈 Get passed-in state
+  const event = state?.event; // 👈 Access event from state
 
-  // ✅ Example way to check login state (replace with actual state management)
-  const isLoggedIn = !!localStorage.getItem("token"); // Example: Check login status from local storage
-
-  const event = events.find((e) => e.id === parseInt(id));
+  const isLoggedIn = !!localStorage.getItem("token");
 
   if (!event) {
     return <div className="event-details-error">Event not found</div>;
@@ -18,23 +16,20 @@ const EventDetails = () => {
 
   const handleBooking = () => {
     if (!isLoggedIn) {
-      // ✅ Redirect to login page if not logged in
       navigate("/login");
     } else {
-      // ✅ Redirect to payment page if logged in
-      navigate(`/payment/${id}`);
+      navigate(`/payment/${id}`, { state: { event } });
+    // 👈 Pass event to payment page
     }
   };
 
   return (
     <div>
-      {/* Blurred Background */}
       <div
         className="event-background"
         style={{ backgroundImage: `url(${event.image})` }}
       />
 
-      {/* Event Details */}
       <div className="event-details">
         <h2 className="event-title">{event.title}</h2>
         <p className="event-info">📅 Date: {event.date}</p>

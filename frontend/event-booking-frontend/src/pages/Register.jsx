@@ -51,7 +51,7 @@ const Register = () => {
       // ✅ Check if `_id` exists in the response instead of `response.success`
     if (response._id) {
         setMessage("Registration successful! Redirecting...");
-        setTimeout(() => navigate("/login"), 2000); // ✅ Redirects user after successful registration
+        setTimeout(() => navigate("/login"), 1000); // ✅ Redirects user after successful registration
       } else {
         setMessage(response.message || "Registration failed."); // ✅ Handled API error response
       }

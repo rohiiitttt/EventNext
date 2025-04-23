@@ -1,0 +1,42 @@
+.payment-success {
+  max-width: 500px;
+  margin: 60px auto;
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #333;
+}
+
+.payment-success h2 {
+  color: green;
+  margin-bottom: 20px;
+}
+
+.event-summary {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.confirmation-msg {
+  margin: 20px 0;
+  color: #555;
+}
+
+button {
+  background-color: var(--btn-bg-color);
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: var(--btn-hover-color);
+}

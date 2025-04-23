@@ -8,7 +8,7 @@ const EventDetails = () => {
   const { state } = useLocation(); // 👈 Get passed-in state
   const event = state?.event; // 👈 Access event from state
 
-  const isLoggedIn = !!localStorage.getItem("token");
+  const isLoggedIn = !!localStorage.getItem("authToken");
 
   if (!event) {
     return <div className="event-details-error">Event not found</div>;
@@ -33,7 +33,7 @@ const EventDetails = () => {
       <div className="event-details">
         <h2 className="event-title">{event.title}</h2>
         <p className="event-info">📅 Date: {event.date}</p>
-        <p className="event-info">📍 Venue: {event.location}</p>
+        <p className="event-info">📍 Venue: {event.venue}</p>
         <p className="event-info">👤 Organizer: {event.organizer || "N/A"}</p>
         <p className="event-description">
           {event.description || "No description available."}

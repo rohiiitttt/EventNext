@@ -1,7 +1,7 @@
 /* Login container fix */
 .login {
   width: 100%;
-  max-width: 400px; /* ✅ Limit width */
+  max-width: 400px;
   margin: 50px auto;
   padding: 20px;
   background-color: var(--bg-color);
@@ -14,13 +14,13 @@
 .password-container {
   position: relative;
   width: 100%;
-  margin-bottom: 12px; /* ✅ Added gap below password field */
+  margin-bottom: 12px;
 }
 
 .password-container input {
-  width: 100%; /* ✅ Proper width */
+  width: 100%;
   padding: 12px;
-  padding-right: 90px; /* ✅ Space for eye icon */
+  padding-right: 50px; /* Enough space for the eye icon */
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
@@ -30,19 +30,19 @@
 
 /* Eye icon inside input field */
 .password-container button {
-  position: relative;
-  right: 1px;
-  top: 5%;
-  transform: translateY(-130%);
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--btn-bg-color); 
+  color: var(--btn-bg-color);
   padding: 0;
   font-size: 1.2rem;
 }
 
-/* Button styles */
+/* Submit button styles */
 button[type="submit"] {
   background-color: var(--btn-bg-color);
   color: #fff;
@@ -51,9 +51,9 @@ button[type="submit"] {
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  width: 100%; /* ✅ Match container width */
+  width: 100%;
   transition: background-color 0.3s ease;
-  margin-top: 10px; /* ✅ Extra gap added */
+  margin-top: 10px;
 }
 
 button[type="submit"]:hover {

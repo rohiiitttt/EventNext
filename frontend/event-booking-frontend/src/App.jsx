@@ -4,6 +4,7 @@ import AuthProvider from "./context/AuthContext";
 import Home from "./pages/Home";
 import Events from "./pages/Event/Events";
 import EventDetails from "./pages/Event/EventDetails";
+import PaymentSuccess from "./pages/Event/PaymentSuccess";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -33,6 +34,8 @@ const App = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/user-profile" element={<UserProfile />} />
+              <Route path="/payment/:id" element={<PaymentSuccess />} />
+
             </Routes>
           </main>
           <Footer />

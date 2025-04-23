@@ -151,7 +151,7 @@ export const resendOtp = async (email) => {
 };
 export const getDashboardData = async (token) => {
   try {
-    console.log("Fetching dashboard data..."); // Log to check if it's running twice
+    console.log("Fetching dashboard data...");
     const response = await API.get("/dashboard", {
       headers: { Authorization: `Bearer ${token}` },
     });

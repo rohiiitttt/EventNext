@@ -84,8 +84,9 @@ exports.createEvent = async (req, res) => {
   try {
     console.log("🔹 [START] Creating Event");
 
-    const { title, description, date, venue, ticketPrices, availableTickets } = req.body;
+    const { title, description, venue, ticketPrices, availableTickets } = req.body;
     const userId = req.user.id; // Ensure user is authenticated
+    const date = new Date(req.body.date); // Convert input to Date object
 
     console.log("📌 Request Data:", { title, description, date, venue, ticketPrices, availableTickets, userId });
 
@@ -99,7 +100,7 @@ exports.createEvent = async (req, res) => {
     const newEvent = new Event({
       title,
       description,
-      date,
+      date, // Stored as Date object
       venue,
       ticketPrices,
       availableTickets,
@@ -112,7 +113,10 @@ exports.createEvent = async (req, res) => {
 
     res.status(201).json({
       message: "Event created successfully",
-      event: newEvent,
+      event: {
+        ...newEvent._doc,
+        date: newEvent.date.toISOString().replace("T", " ").slice(0, 16) // Format response
+      },
     });
 
     console.log("🔹 [END] Creating Event");

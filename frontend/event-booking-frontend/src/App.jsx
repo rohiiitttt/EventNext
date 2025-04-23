@@ -10,8 +10,6 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import UserProfile from "./pages/UserProfile";
-// import PaymentPage from "./pages/PaymentPage";
-
 const App = () => {
   const toggleTheme = () => {
     const newTheme =
@@ -35,8 +33,6 @@ const App = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/user-profile" element={<UserProfile />} />
-              {/* <Route path="/payment" element={<PaymentPage />} /> */}
-
             </Routes>
           </main>
           <Footer />

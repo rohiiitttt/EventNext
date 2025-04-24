@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import '../styles/MyBookings.css'; // ✅ Import CSS
 
 const MyBookings = () => {
@@ -8,20 +7,44 @@ const MyBookings = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Simulate an API call with dummy data
     const fetchBookings = async () => {
       try {
         setLoading(true);
-        const token = localStorage.getItem('token');
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        
+        // Dummy bookings data
+        const dummyData = [
+          {
+            _id: '1',
+            event: {
+              title: 'Coding Bootcamp',
+              date: '2025-12-15',
+              location: 'London Tech Park',
+            },
+            createdAt: '2025-04-10',
           },
-        };
-        const { data } = await axios.get('http://localhost:5000/api/bookings/mybookings', config);
-        setBookings(data);
+          
+
+
+          {
+            _id: '2',
+            event: {
+              title: 'Festival B',
+              date: '2025-06-10',
+              location: 'Venue B',
+            },
+            createdAt: '2025-04-12',
+          },
+        ];
+        
+        // Simulate a delay
+        setTimeout(() => {
+          setBookings(dummyData);
+          setLoading(false);
+        }, 1000);
+        
       } catch (err) {
-        setError(err.response?.data?.message || 'Failed to load bookings');
-      } finally {
+        setError('Failed to load bookings');
         setLoading(false);
       }
     };

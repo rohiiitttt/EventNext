@@ -1,12 +1,12 @@
 .payment-success {
   max-width: 500px;
   margin: 60px auto;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9 !important;  /* Force background to stay light */
   padding: 30px;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  color: #333;
+  color: #000 !important;  /* Force text to be black */
 }
 
 .payment-success h2 {
@@ -17,7 +17,7 @@
 .event-summary {
   margin-top: 20px;
   padding: 15px;
-  background-color: #fff;
+  background-color: #fff !important; /* Force the background to stay white */
   border-radius: 8px;
   border: 1px solid #ddd;
 }

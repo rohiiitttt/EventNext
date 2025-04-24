@@ -1,4 +1,4 @@
-/* Ensure the page takes full height */
+/* Make the page take full height */
 html, body {
   height: 100%;
   margin: 0;
@@ -6,12 +6,13 @@ html, body {
   flex-direction: column;
 }
 
-/* Main content wrapper to push footer down */
+/* This wrapper should go around your main page content */
 .main-content {
-  flex: 1;
+  flex: 1; /* This pushes the footer to the bottom when there's not enough content */
+  padding-bottom: 2rem; /* Optional: space so content doesn’t feel squashed at bottom */
 }
 
-/* Footer stays at the bottom only when scrolling to the end */
+/* Footer sits at the bottom, but only after scrolling through content */
 .footer {
   background: rgba(0, 0, 0, 0.7);
   color: white;

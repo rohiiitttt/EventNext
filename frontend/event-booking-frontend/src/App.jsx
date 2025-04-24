@@ -11,6 +11,8 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import UserProfile from "./pages/UserProfile";
+import MyBookings from "./pages/Booking/MyBookings";
+
 const App = () => {
   const toggleTheme = () => {
     const newTheme =
@@ -35,6 +37,7 @@ const App = () => {
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/user-profile" element={<UserProfile />} />
               <Route path="/payment/:id" element={<PaymentSuccess />} />
+              <Route path="/my-bookings" element={<MyBookings />} />
 
             </Routes>
           </main>

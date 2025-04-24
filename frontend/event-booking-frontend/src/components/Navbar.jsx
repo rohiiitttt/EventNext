@@ -47,7 +47,10 @@ const Navbar = () => {
               <>
                 <Link to="/user-profile" onClick={() => setMenuOpen(false)}>View Profile</Link>
                 <Link to="/edit-profile" onClick={() => setMenuOpen(false)}>Edit Profile</Link>
+                <Link to="/my-bookings" onClick={() => setMenuOpen(false)}>My Bookings</Link>
+                <Link to="/events" onClick={() => setMenuOpen(false)}>Events</Link>
                 <button onClick={() => { logout(); setMenuOpen(false); }}>Logout</button>
+
               </>
             )}
           </div>
